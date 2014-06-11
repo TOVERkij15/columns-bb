@@ -30,13 +30,13 @@ var PhotoCollection1 = Backbone.Collection.extend({
 
 var PhotoCollection2 = Backbone.Collection.extend({
 	model: Photo,	
-  	url: 'http://tiny-pizza-server.herokuapp.com/collections/photos2',
+  	url: 'http://tiny-pizza-server.herokuapp.com/collections/photos',
 
 });
 
 var PhotoCollection3 = Backbone.Collection.extend({
 	model: Photo,	
-  	url: 'http://tiny-pizza-server.herokuapp.com/collections/photos3',
+  	url: 'http://tiny-pizza-server.herokuapp.com/collections/photos',
 
 });
 
@@ -47,39 +47,137 @@ var PhotoCollection3 = Backbone.Collection.extend({
 ///////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////View/////////////////////////////////////////
 
-var PhotoView = Backbone.View.extend({
+var PhotoViewOne = Backbone.View.extend({
+	
+	tagName: "nav",
 
 	template: _.template($('.column-one-template').text()),
-	twoTemplate: _.template($('.column-two-template').text()),
-	threeTemplate: _.template($('.column-three-template').text()),
+	
 
-
+//column1
 	events: {
 	    "click .edit-photo": "editPhoto",
 	    "click .remove-photo": "deletePhoto",
 	    "click .store-photo": "savePhoto",
+	    "click .move-center": "movePhoto",
+	    "click .add-photo":   "addPhoto"
 	   
   	},
 
-	initialize: function(){
-		this.listenTo(this.model, 'change', this.render),
-		$('.collection1').append(this.el)
-		this.render();
-	},
+  	initialize: function(){
+  		this.listenTo(this.model, 'add', this.render),
+  		$('.collection1').append(this.el);
+  		this.render();
+  	},
 
-
-	render: function() {
+  	render: function(){
+  		if (this.model.attributes.hasOwnProperty('url')){
     	var renderedtemplate = this.template(this.model.attributes)
-    	this.$el.html(renderedtemplate)
-
+    	this.$el.html(renderedtemplate);
+  		}
   	},
 
   	editPhoto: function() {
-    	var renderedtemplate = this.template(this.model.attributes)
-    	this.$el.html(renderedtemplate)
-    },
+    	var renderTemplate = this.template(this.model.attributes)
+    	this.$el.html(renderTemplate);
+  
+  	},
+	/*var addPhoto = new PhotoCollection1,
 
-    deletePhoto: function() {
+  		addPhoto.add(this.$el.get({model: 'url'}))
+		$('.collection1').append(this.el)
+	},*/
+
+ 
+  	deletePhoto: function() {
+	    this.model.destroy();
+	    this.remove();
+  	
+  	},
+
+	savePhoto: function(){
+
+	var fieldvalue = this.$el.find('.field input').val();
+	  	console.log(fieldvalue);
+	  
+	  
+	  	this.model.set('Photo', fieldvalue);
+	 
+	  	this.model.save()
+	
+	},
+});
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+var PhotoViewTwo = Backbone.View.extend({
+  twoTemplate: _.template($('.column-two-template').text()),
+
+  tagName: "nav",
+  	
+  	events: {
+	    "click .edit-photo": "editPhoto",
+	    "click .remove-photo": "deletePhoto",
+	    "click .move-center": "movePhoto",
+	   
+  	},
+
+  	initialize: function(){
+  		this.listenTo(this.model, 'change', this.render),
+  		$('.collection2').append(this.el);
+  		this.render();
+  	},
+
+  	render: function(){
+  		if (this.model.attributes.hasOwnProperty('url')){
+    	var renderedtwoTemplate = this.twoTemplate(this.model.attributes)
+    	this.$el.html(renderedtwoTemplate);
+  		}
+  	},
+
+  	deletePhoto: function() {
+	    this.model.destroy();
+	    this.remove();
+  	
+  	},
+});
+
+var PhotoViewThree = Backbone.View.extend({
+  threeTemplate: _.template($('.column-three-template').text()),
+  	
+  	tagName: "nav",
+
+  	events: {
+	    "click .edit-photo": "editPhoto",
+	    "click .remove-photo": "deletePhoto",
+	    "click .move-back": "movePhoto3",
+	   
+  	},
+
+  	initialize: function(){
+  		this.listenTo(this.model, 'change', this.render),
+  		$('.collection3').append(this.el);
+  		this.render();
+  	},
+
+  	render: function(){
+  		if (this.model.attributes.hasOwnProperty('url')){
+    	var renderedthreeTemplate = this.threeTemplate(this.model.attributes)
+    	this.$el.html(renderedthreeTemplate);
+  		}
+  	},
+
+  	deletePhoto: function() {
 	    this.model.destroy();
 	    this.remove();
   	
@@ -97,7 +195,27 @@ var PhotoView = Backbone.View.extend({
 	
 	},
 
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
 
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////Router////////////////////////////////
@@ -113,21 +231,20 @@ var AppRouter = Backbone.Router.extend({
 
 		leftPhoto.fetch().done(function() {
 			leftPhoto.each(function (photo) {
-				
-				new PhotoView({ model: photo });
+				new PhotoViewOne({ model: photo });
 			})
 		});
 	
 		centerPhoto.fetch().done(function() {
 			centerPhoto.each(function (photo) {
-				new PhotoView({ model: photo });
+				new PhotoViewTwo({ model: photo });
 			})
 		});
 	
 
 		rightPhoto.fetch().done(function() {
 			rightPhoto.each(function (photo) {
-				new PhotoView({ model: photo });
+				new PhotoViewThree({ model: photo });
 			})
 		});
 	},	
@@ -135,6 +252,7 @@ var AppRouter = Backbone.Router.extend({
 
 
 
+var addPhoto = new PhotoCollection1;	
 
 var Router = new AppRouter;
 Backbone.history.start();
