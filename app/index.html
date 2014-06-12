@@ -38,7 +38,6 @@
             <input class= "add-photo-input" type= "text" placeholder= "Add new content here">
             <h3 class="field"> <input type="text" value="<%= url %>"> </h3>
             <h4 class="photo"> <img src='<%= url %>' </h4>
-            <button class="edit-photo button"> Edit </button>
             <button class="remove-photo button"> Delete </button>
             <button class="add-photo button"> Add</button>
             <button class="store-photo button">Save</button>
@@ -47,16 +46,16 @@
         
 
         <script type= "text/template" class= "column-two-template"> 
-            <button class="edit-photo button"> Edit </button>
+            <h5 class="photo"> <img src='<%= url %>' </h5>
             <button class="remove-photo button"> Delete </button>
-            <button class="move-center button">move2</button>
+            <button class="move-right button">move2</button>
 
         </script>
        
         
         <script type= "text/template" class= "column-three-template"> 
-            <button class="store-photo button">Save</button>
-            <button class="remove-photo button">delete</button>
+            <h6 class="photo"> <img src='<%= url %>' </h6>
+            <button class="remove-photo button">Delete</button>
             <button class="move-back button">move3</button>
         </script>
 
