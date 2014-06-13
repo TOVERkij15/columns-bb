@@ -13,12 +13,39 @@ body {
     
 }
 
-.container {
+.container-image {
     width: 80%;
     float: left;
 }
 
-div {
+// .collection {
+//     display:inline-block;
+//     min-width:30%;
+//     max-height:800px;
+//     overflow:scroll;
+//     border: 10px solid black;
+//     background-image:url("http://ilovemykidsblog.net/wp-content/uploads/2013/06/Chalkboard-background-1.jpg"); 
+//     float:left;
+
+//     .photo {
+//         display:inline-block;
+        
+        
+//      img {
+//             display:inline-block;
+//             height: 50px;
+//             width: 40px;
+//         }
+//     }
+// }
+
+
+
+
+
+
+//Responive-Web-app practice
+.container {
     background: tan; 
     width: 31.333333%;
     min-height: 25.000em;
@@ -35,19 +62,19 @@ div {
 }
 
 
-div:nth-of-type(1n) {
+.container:nth-of-type(1n) {
         background: tan;
         margin-right: 0.625em;
         float: left;
 }
 
-div:nth-of-type(2n) {
+.container:nth-of-type(2n) {
         background: green;
         margin-right: 0.625em;
         float: left;
 }
 
-div:nth-of-type(3n) {
+.container:nth-of-type(3n) {
         background: teal;
         margin-right: 0.625em;
         float: left;
@@ -56,22 +83,22 @@ div:nth-of-type(3n) {
 
 
 @media screen and (max-width: 43.750em){
-    div {
+    .container {
         width: 45%;
         margin-right: 10%;
     }
 
-    div:nth-of-type(1n) {
+    .container:nth-of-type(1n) {
         margin-right: 10%;
         background: blue;
     }
 
-    div:nth-of-type(2n) {
+    .container:nth-of-type(2n) {
         margin-right: 0;
         background: yellow;
     }
 
-    div:nth-of-type(3n) {
+    .container:nth-of-type(3n) {
         margin-right: 10%;
         background: blue;
     }
