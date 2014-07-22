@@ -2,14 +2,16 @@
 // endbower
 
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    background: teal;
+    font-family: 'Shadows Into Light', cursive;
+    color: white;
+    opacity: 0.7;
 }
 
 .logo{
     margin-left: 12.500em;
     max-width: 100px;
+    border-radius: 50%;
     
 }
 
@@ -17,32 +19,6 @@ body {
     width: 80%;
     float: left;
 }
-
-// .collection {
-//     display:inline-block;
-//     min-width:30%;
-//     max-height:800px;
-//     overflow:scroll;
-//     border: 10px solid black;
-//     background-image:url("http://ilovemykidsblog.net/wp-content/uploads/2013/06/Chalkboard-background-1.jpg"); 
-//     float:left;
-
-//     .photo {
-//         display:inline-block;
-        
-        
-//      img {
-//             display:inline-block;
-//             height: 50px;
-//             width: 40px;
-//         }
-//     }
-// }
-
-
-
-
-
 
 //Responive-Web-app practice
 .container {
@@ -63,19 +39,20 @@ body {
 
 
 .container:nth-of-type(1n) {
-        background: tan;
+        background: url("http://l.rgbimg.com/cache1oGc7i/users/w/we/weirdvis/600/my4zpW4.jpg");
         margin-right: 0.625em;
         float: left;
+        border-radius: 2%;
 }
 
 .container:nth-of-type(2n) {
-        background: green;
+        background: url("http://l.rgbimg.com/cache1oGc7i/users/w/we/weirdvis/600/my4zpW4.jpg");
         margin-right: 0.625em;
         float: left;
 }
 
 .container:nth-of-type(3n) {
-        background: teal;
+        background: url("http://l.rgbimg.com/cache1oGc7i/users/w/we/weirdvis/600/my4zpW4.jpg");
         margin-right: 0.625em;
         float: left;
 }
@@ -90,17 +67,17 @@ body {
 
     .container:nth-of-type(1n) {
         margin-right: 10%;
-        background: blue;
+        background: url("http://cdn.doublemesh.com/wp-content/uploads/2012/04/Brown-textured-paper.jpg");
     }
 
     .container:nth-of-type(2n) {
         margin-right: 0;
-        background: yellow;
+        background: url("http://cdn.doublemesh.com/wp-content/uploads/2012/04/Brown-textured-paper.jpg");
     }
 
     .container:nth-of-type(3n) {
         margin-right: 10%;
-        background: blue;
+        background: url("http://cdn.doublemesh.com/wp-content/uploads/2012/04/Brown-textured-paper.jpg");
     }
 }
 
