@@ -2,11 +2,8 @@
 
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////MODEL://///////
-//MODEL:
 //How data should look and behave.
 //extend correctly sets up the prototype chain, so subclasses created with extend can be further extended and subclassed as far as you like.
-
-
 var Photo = Backbone.Model.extend({
 //specify the default attributes for model.
 	idAttribute: "_id",
